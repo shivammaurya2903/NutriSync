@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriSync | My Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+  <header>
+    <h1>NutriSync</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <section class="cart-section">
+    <h2>Your Shopping Cart</h2>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Premium Almonds</td>
+          <td>₹499</td>
+          <td><input type="number" value="1" min="1" aria-label="Quantity for Premium Almonds" /></td>
+          <td>₹499</td>
+          <td><button>✕</button></td>
+        </tr>
+        <tr>
+          <td>Exotic Berries Mix</td>
+          <td>₹699</td>
+          <td><input type="number" value="2" min="1" aria-label="Quantity for Exotic Berries Mix" /></td>
+          <td>₹1398</td>
+          <td><button>✕</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <h3>Total: ₹1897</h3>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Free Shipping Banner -->
+    <div id="free-shipping-banner" class="free-shipping-banner" style="display: none;">
+      <p>🎉 Congratulations! You qualify for FREE shipping on orders over ₹2000.</p>
+    </div>
+
+    <!-- You Might Also Like Section -->
+    <section class="recommendations">
+      <h3>You Might Also Like</h3>
+      <div class="recommendations-grid">
+        <div class="product-card">
+          <img src="images/dryfruitbanner.jpg" alt="Organic Walnuts" />
+          <h4>Organic Walnuts</h4>
+          <p>₹599</p>
+          <a href="shop.html" class="add-to-cart-btn">Add to Cart</a>
+        </div>
+        <div class="product-card">
+          <img src="images/dryfruitbanner1.png" alt="Mixed Nuts Pack" />
+          <h4>Mixed Nuts Pack</h4>
+          <p>₹799</p>
+          <a href="shop.html" class="add-to-cart-btn">Add to Cart</a>
+        </div>
+        <div class="product-card">
+          <img src="images/dryfruitbanner2.png" alt="Dried Apricots" />
+          <h4>Dried Apricots</h4>
+          <p>₹499</p>
+          <a href="shop.html" class="add-to-cart-btn">Add to Cart</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-signup">
+      <h3>Stay Updated with NutriSync</h3>
+      <p>Subscribe to our newsletter for exclusive offers, health tips, and new product launches.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </section>
+
+  <footer>
+    <div>
+      <h4>NutriSync</h4>
+      <p>Owner: Shivam Maurya</p>
+      <p>Location: Lucknow, Uttar Pradesh</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p>Recipes</p>
+      <p>Our Story</p>
+      <p>FAQs</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <p>Email</p>
+      <p>Instagram</p>
+      <p>WhatsApp</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const quantityInputs = document.querySelectorAll('.cart-table tbody input[type="number"]');
+      const subtotalCells = document.querySelectorAll('.cart-table tbody td:nth-child(4)');
+      const totalElement = document.querySelector('.cart-summary h3');
+      const freeShippingBanner = document.getElementById('free-shipping-banner');
+
+      function updateCart() {
+        let total = 0;
+        quantityInputs.forEach((input, index) => {
+          const price = parseInt(input.closest('tr').querySelector('td:nth-child(2)').textContent.replace('₹', ''));
+          const quantity = parseInt(input.value);
+          const subtotal = price * quantity;
+          subtotalCells[index].textContent = '₹' + subtotal;
+          total += subtotal;
+        });
+        totalElement.textContent = 'Total: ₹' + total;
+
+        // Show free shipping banner if total >= 2000
+        if (total >= 2000) {
+          freeShippingBanner.style.display = 'block';
+        } else {
+          freeShippingBanner.style.display = 'none';
+        }
+      }
+
+      quantityInputs.forEach(input => {
+        input.addEventListener('input', updateCart);
+      });
+
+      // Initial calculation
+      updateCart();
+
+      // Newsletter form submission (basic alert for demo)
+      const newsletterForm = document.querySelector('.newsletter-form');
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for subscribing!');
+        newsletterForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>

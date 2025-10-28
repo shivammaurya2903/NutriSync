@@ -1,0 +1,119 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+}
+
+.login-left {
+  flex: 1;
+  background-color: var(--forest-green);
+  color: var(--cream);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.login-left p {
+  font-size: 1.2rem;
+}
+
+.login-characters img {
+  width: 120px;
+  margin: 1rem;
+}
+
+.login-right {
+  flex: 1;
+  background-color: var(--cream);
+  color: var(--bg-dark);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login-logo img {
+  width: 50px;
+}
+
+.login-right h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-right p {
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  gap: 1rem;
+}
+
+form input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form a {
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--forest-green);
+  text-decoration: none;
+}
+
+form button {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.social-login {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.google-btn, .facebook-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.google-btn {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.facebook-btn {
+  background-color: #3b5998;
+  color: #fff;
+}

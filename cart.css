@@ -1,0 +1,171 @@
+.cart-section {
+  padding: 2rem;
+  background-color: var(--bg-dark);
+  color: var(--cream);
+  text-align: center;
+}
+
+.cart-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-collapse: collapse;
+  background-color: var(--cream);
+  color: var(--bg-dark);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cart-table th, .cart-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-table input[type="number"] {
+  width: 60px;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+
+.cart-table button {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cart-summary {
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Free Shipping Banner */
+.free-shipping-banner {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Recommendations Section */
+.recommendations {
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.recommendations h3 {
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  background-color: var(--cream);
+  color: var(--bg-dark);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.product-card h4 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.product-card p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.add-to-cart-btn {
+  display: inline-block;
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #d4af37;
+}
+
+/* Newsletter Signup */
+.newsletter-signup {
+  background-color: var(--cream);
+  color: var(--bg-dark);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.newsletter-signup h3 {
+  margin-bottom: 0.5rem;
+}
+
+.newsletter-signup p {
+  margin-bottom: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.newsletter-form button {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
