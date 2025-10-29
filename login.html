@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NutriSync | Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -19,16 +19,9 @@
       </div>
       <div class="features">
         <div class="feature">
+          <i class="fas fa-star"></i>
           <h3>Premium Quality</h3>
-          <p>Handpicked dry fruits from trusted farms worldwide.</p>
-        </div>
-        <div class="feature">
-          <h3>Health Benefits</h3>
-          <p>Rich in nutrients, antioxidants, and natural goodness.</p>
-        </div>
-        <div class="feature">
-          <h3>Fast Delivery</h3>
-          <p>Quick and secure shipping to your doorstep.</p>
+          <p>Handpicked dry fruits and nuts for the best taste and nutrition.</p>
         </div>
       </div>
     </div>
@@ -41,17 +34,25 @@
       <h2>Welcome Back</h2>
       <p>Please login to your account</p>
       <form>
-        <input type="email" placeholder="Email address" required />
-        <input type="password" placeholder="Password" required />
-        <a href="#">Forgot Password?</a>
-        <button type="submit">Login</button>
-      </form>
-      <p>Or login with</p>
-      <div class="social-login">
-        <button class="google-btn">Google</button>
-        <button class="facebook-btn">Facebook</button>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email address" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required />
+        </div>
+      <div class="forgot">
+        <a href="#"><i class="fas fa-key"></i> Forgot Password?</a>
       </div>
-      <p>Don’t have an account? <a href="#">Sign up</a></p>
+      <button type="submit"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      </form>
+      <div class="divider">OR</div>
+      <button class="google"><i class="fab fa-google"></i> Continue with Google</button>
+      <button class="apple"><i class="fab fa-apple"></i> Continue with Apple</button>
+
+      <p class="signup">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
     </div>
   </div>
 </body>
