@@ -56,11 +56,27 @@ nav a {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: var(--transition);
+  position: relative;
+}
+
+nav a::before {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover::before {
+  opacity: 1;
 }
 
 nav a:hover {
   background-color: var(--gold);
   color: var(--bg-dark);
+  box-shadow: 0 0 10px var(--gold);
+  transform: scale(1.05);
 }
 
 .hero {
@@ -82,6 +98,7 @@ nav a:hover {
   font-size: 2.5rem;
   color: var(--gold);
   margin-bottom: 1rem;
+  font-style: italic;
 }
 
 .hero-text p {
@@ -124,22 +141,37 @@ nav a:hover {
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--shadow);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px var(--shadow), 0 0 15px var(--gold);
 }
 
 .sourcing-story {
   padding: 3rem 2rem;
-  background: url('https://t3.ftcdn.net/jpg/01/73/42/44/360_F_173424466_zEiD08LuUXY9Ffu7vErLXAKhj2LKZAAO.jpg') center/cover no-repeat;
-  color: var(--cream);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  background: url('images/story-banner.png') center/cover no-repeat;
+  background-attachment: fixed;
+  color: var(--bg-dark);
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
   text-align: center;
+  transform: translateZ(0);
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .sourcing-story h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.sourcing-story h2::before {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.5rem;
 }
 
 .carousel, .gifting-banner {
@@ -164,6 +196,16 @@ nav a:hover {
   font-family: 'Playfair Display', serif;
   color: var(--forest-green);
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.about h2::before {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.5rem;
 }
 
 .about p {
@@ -208,6 +250,16 @@ nav a:hover {
   font-family: 'Playfair Display', serif;
   color: var(--gold);
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.recipes h2::before {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.5rem;
 }
 
 .recipe-grid {
@@ -228,8 +280,8 @@ nav a:hover {
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--shadow);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px var(--shadow), 0 0 15px var(--gold);
 }
 
 .recipe-card h3 {
@@ -264,6 +316,16 @@ nav a:hover {
   font-family: 'Playfair Display', serif;
   color: var(--gold);
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.testimonials h2::before {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.5rem;
 }
 
 .testimonial-grid {
@@ -286,6 +348,7 @@ nav a:hover {
   font-style: italic;
   margin-bottom: 1rem;
   line-height: 1.6;
+  font-family: 'Lato', sans-serif;
 }
 
 .testimonial cite {
@@ -309,6 +372,7 @@ nav a:hover {
   background-color: var(--forest-green);
   color: var(--cream);
   transform: scale(1.05);
+  box-shadow: 0 0 10px var(--gold);
 }
 
 footer {

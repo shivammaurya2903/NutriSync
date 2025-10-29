@@ -120,12 +120,19 @@ body {
   background: #ffffff;
 }
 
+
 #form-wrapper {
+
   perspective: 1000px;
+
   position: relative;
+
   width: 100%;
+
   height: 100%;
+
 }
+
 
 .form {
   position: absolute;
@@ -162,11 +169,11 @@ body {
   background: #0F1A15; /* Darker green on hover */
 }
 
-#form-wrapper.flipped .login-form {
+#form-wrapper.signup-active .login-form {
   transform: rotateY(-180deg);
 }
 
-#form-wrapper.flipped .signup-form {
+#form-wrapper.signup-active .signup-form {
   transform: rotateY(0deg);
 }
 
