@@ -77,6 +77,7 @@ body {
   max-height: 400px;
   height: auto;
   margin-bottom: 1rem;
+  animation: slideIn 1s ease-out 0.5s both;
 }
 
 .features {
@@ -119,21 +120,85 @@ body {
   background: #ffffff;
 }
 
-.login-logo {
+#form-wrapper {
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.8s ease-in-out;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form {
+  transform: rotateY(0deg);
+}
+
+.signup-form {
+  transform: rotateY(180deg);
+}
+
+.signup-form .form-logo h1 {
+  color: #D4AF37; /* Gold color for signup */
+}
+
+.signup-form h2 {
+  color: #1E352F; /* Forest green for signup heading */
+}
+
+.signup-form button[type="submit"] {
+  background: #1E352F; /* Forest green for signup button */
+}
+
+.signup-form button[type="submit"]:hover {
+  background: #0F1A15; /* Darker green on hover */
+}
+
+#form-wrapper.flipped .login-form {
+  transform: rotateY(-180deg);
+}
+
+#form-wrapper.flipped .signup-form {
+  transform: rotateY(0deg);
+}
+
+.toggle-btn {
+  color: #056C89;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.toggle-btn:hover {
+  color: #023653;
+}
+
+.form-logo {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  animation: bounceIn 1.2s ease-out;
 }
 
-.login-logo img {
-  width: 50px;
+.form-logo img {
+  width: 60px;
   height: auto;
 }
 
-.login-logo h1 {
+.form-logo h1 {
   font-size: 1.8rem;
   color: #023653;
+  margin: 0;
 }
 
 .login-right h2 {
@@ -174,17 +239,105 @@ form {
   color: #333333;
   width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.forgot {
-  text-align: right;
+.input-group input:focus {
+  border-color: #056C89;
+  box-shadow: 0 0 5px rgba(5, 108, 137, 0.5);
+  outline: none;
+}
+
+.input-group input:focus + i {
+  color: #023653;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
-.forgot a {
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555555;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #056C89;
+}
+
+.forgot-link {
   font-size: 0.9rem;
   color: #056C89;
   text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.terms {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.terms p {
+  font-size: 0.8rem;
+  color: #777777;
+  margin: 0;
+}
+
+.terms a {
+  color: #056C89;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.newsletter {
+  margin-bottom: 1rem;
+}
+
+.newsletter label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555555;
+  cursor: pointer;
+}
+
+.newsletter input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #056C89;
+  margin-top: 0.1rem;
+}
+
+.signup-form .terms label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555555;
+  cursor: pointer;
+}
+
+.signup-form .terms input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #056C89;
+  margin-top: 0.1rem;
 }
 
 button[type="submit"] {
@@ -201,6 +354,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background: #023653;
+  transform: scale(1.05);
 }
 
 .divider {
@@ -247,16 +401,27 @@ button[type="submit"]:hover {
 
 .google:hover {
   background: #f8f9fa;
+  transform: scale(1.02);
 }
 
 .apple:hover {
   background: #f8f9fa;
+  transform: scale(1.02);
 }
 
 .login-right > p:last-child {
   margin-top: 1rem;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.signup {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555555;
+  line-height: 1.4;
 }
 
 .login-right > p:last-child a {
@@ -278,5 +443,17 @@ button[type="submit"]:hover {
   0% { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
   50% { box-shadow: 0 16px 48px rgba(5, 108, 137, 0.4); }
   100% { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
 }
 

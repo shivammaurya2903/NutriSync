@@ -111,18 +111,19 @@
   color: var(--gold);
 }
 
-.add-to-cart-btn {
-  display: inline-block;
+.product-card button {
   background-color: var(--gold);
   color: var(--bg-dark);
+  border: none;
   padding: 0.5rem 1rem;
-  text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5rem;
   transition: background-color 0.3s;
 }
 
-.add-to-cart-btn:hover {
+.product-card button:hover {
   background-color: #d4af37;
 }
 

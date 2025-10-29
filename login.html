@@ -20,40 +20,92 @@
       <div class="features">
         <div class="feature">
           <i class="fas fa-star"></i>
-          <h3>Premium Quality</h3>
+          <h4>Premium Quality</h4>
           <p>Handpicked dry fruits and nuts for the best taste and nutrition.</p>
         </div>
       </div>
     </div>
 
+     <!-- Login Form -->
     <div class="login-right">
-      <div class="login-logo">
-        <img src="images/logo.png" alt="NutriSync Logo" />
-        <h1>NutriSync</h1>
-      </div>
-      <h2>Welcome Back</h2>
-      <p>Please login to your account</p>
-      <form>
-        <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email address" required />
+      <div id="form-wrapper">
+        <div class="form login-form">
+          <div class="form-logo">
+            <img src="images/logo.png" alt="NutriSync Logo" />
+            <h1>NutriSync</h1>
+          </div>
+          <h2>Welcome Back</h2>
+          <p>Please login to your account</p>
+          <form>
+            <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email address" required />
+            </div>
+            <div class="input-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" required />
+            </div>
+            <div class="remember-forgot">
+              <label class="remember-me">
+                <input type="checkbox" /> Remember me
+              </label>
+              <a href="#" class="forgot-link"><i class="fas fa-key"></i> Forgot Password?</a>
+            </div>
+            <button type="submit"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+            <div class="terms">
+              <p>By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </div>
+          </form>
+          <div class="divider">OR</div>
+          <button class="google" id="google-btn"><i class="fab fa-google"></i> Continue with Google</button>
+          <button class="apple" id="apple-btn"><i class="fab fa-apple"></i> Continue with Apple</button>
+          <p class="signup">Don't have an account? <span class="toggle-btn" onclick="toggleForm()">Sign Up</span></p>
         </div>
-        <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required />
+        <div class="form signup-form">
+          <div class="form-logo">
+            <img src="images/logo.png" alt="NutriSync Logo" />
+            <h1>NutriSync</h1>
+          </div>
+          <h2>Create Account</h2>
+          <p>Sign up to get started</p>
+          <form>
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Full Name" required />
+            </div>
+            <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email address" required />
+            </div>
+            <div class="input-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" required />
+            </div>
+            <div class="input-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Confirm Password" required />
+            </div>
+            <div class="newsletter">
+              <label>
+                <input type="checkbox" /> Subscribe to our newsletter for updates and offers.
+              </label>
+            </div>
+            <div class="terms">
+              <label>
+                <input type="checkbox" required /> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+              </label>
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
+          <p class="signup">Already have an account? <span class="toggle-btn" onclick="toggleForm()">Login</span></p>
         </div>
-      <div class="forgot">
-        <a href="#"><i class="fas fa-key"></i> Forgot Password?</a>
       </div>
-      <button type="submit"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-      </form>
-      <div class="divider">OR</div>
-      <button class="google"><i class="fab fa-google"></i> Continue with Google</button>
-      <button class="apple"><i class="fab fa-apple"></i> Continue with Apple</button>
+    </div>
 
-      <p class="signup">Don't have an account? <a href="signup.html">Sign Up</a></p>
-    </div>
-    </div>
   </div>
+
+
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>

@@ -121,47 +121,6 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const quantityInputs = document.querySelectorAll('.cart-table tbody input[type="number"]');
-      const subtotalCells = document.querySelectorAll('.cart-table tbody td:nth-child(4)');
-      const totalElement = document.querySelector('.cart-summary h3');
-      const freeShippingBanner = document.getElementById('free-shipping-banner');
-
-      function updateCart() {
-        let total = 0;
-        quantityInputs.forEach((input, index) => {
-          const price = parseInt(input.closest('tr').querySelector('td:nth-child(2)').textContent.replace('₹', ''));
-          const quantity = parseInt(input.value);
-          const subtotal = price * quantity;
-          subtotalCells[index].textContent = '₹' + subtotal;
-          total += subtotal;
-        });
-        totalElement.textContent = 'Total: ₹' + total;
-
-        // Show free shipping banner if total >= 2000
-        if (total >= 2000) {
-          freeShippingBanner.style.display = 'block';
-        } else {
-          freeShippingBanner.style.display = 'none';
-        }
-      }
-
-      quantityInputs.forEach(input => {
-        input.addEventListener('input', updateCart);
-      });
-
-      // Initial calculation
-      updateCart();
-
-      // Newsletter form submission (basic alert for demo)
-      const newsletterForm = document.querySelector('.newsletter-form');
-      newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for subscribing!');
-        newsletterForm.reset();
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
