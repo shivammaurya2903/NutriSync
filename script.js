@@ -1,3 +1,46 @@
+// auto slider
+let currentSlide = 0;
+let slides = [];
+let dots = [];
+
+function initializeSlider() {
+  slides = document.querySelectorAll('.slide');
+  dots = document.querySelectorAll('.dot');
+
+  if (slides.length === 0 || dots.length === 0) {
+    console.error('Slides or dots not found');
+    return;
+  }
+
+  // Set initial active slide
+  showSlide(0);
+}
+
+function showSlide(index) {
+  if (slides.length === 0 || dots.length === 0) return;
+
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  if (slides.length === 0) return;
+  const nextIndex = (currentSlide + 1) % slides.length;
+  showSlide(nextIndex);
+}
+
+// Initialize slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSlider();
+  // Auto-slide every 5 seconds
+  setInterval(nextSlide, 5000);
+});
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // Load cart from localStorage or initialize empty array
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
