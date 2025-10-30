@@ -656,3 +656,67 @@ footer p {
     font-size: 1rem;
   }
 }
+
+/* Floating Icons Styles */
+.floating-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-icon:hover {
+  transform: scale(1.1) rotateY(180deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 20px var(--gold);
+}
+
+.floating-icon.whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.floating-icon.message {
+  background-color: var(--forest-green);
+  color: var(--cream);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-icons {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .floating-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
