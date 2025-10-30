@@ -1,3 +1,9 @@
+// q & a section
+function toggleFAQ(header) {
+  const answer = header.nextElementSibling;
+  answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+}
+
 // auto slider
 let currentSlide = 0;
 let slides = [];
