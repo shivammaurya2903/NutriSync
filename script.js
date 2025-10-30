@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cart.push({ name, price, quantity: 1 });
     }
     saveCart();
-    alert(`${name} added to cart!`);
+    showNotification(`${name} added to cart!`, 'success');
   }
 
   // Function to remove item from cart
@@ -119,12 +119,47 @@ document.addEventListener('DOMContentLoaded', function() {
   // Render cart if on cart page
   renderCart();
 
-  // Newsletter form submission (basic alert for demo)
+  // Function to show notifications
+  function showNotification(message, type = 'info') {
+    // Remove existing notification
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${type === 'success' ? '#4CAF50' : '#2196F3'};
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      font-weight: bold;
+      animation: slideIn 0.3s ease-out;
+    `;
+
+    document.body.appendChild(notification);
+
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease-out';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  // Newsletter form submission
   const newsletterForm = document.querySelector('.newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for subscribing!');
+      showNotification('Thank you for subscribing!', 'success');
       newsletterForm.reset();
     });
   }
