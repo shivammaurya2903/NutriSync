@@ -60,6 +60,7 @@
   box-shadow: 0 5px 15px var(--shadow);
   transition: var(--transition);
   overflow: hidden;
+  position: relative;
 }
 
 .product-card:hover {
@@ -73,6 +74,26 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
+}
+
+.tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.best-seller {
+  background-color: var(--gold);
+}
+
+.new-arrival {
+  background-color: var(--forest-green);
 }
 
 .product-card h3 {

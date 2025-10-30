@@ -39,26 +39,57 @@
     <h3>Choose by Occasion</h3>
     <div class="filter-buttons">
       <button class="occasion-btn active">All</button>
-      <button class="occasion-btn">Festivals</button>
-      <button class="occasion-btn">Weddings</button>
-      <button class="occasion-btn">Corporate</button>
-      <button class="occasion-btn">Birthdays</button>
+      <button class="occasion-btn">Diwali Picks</button>
+      <button class="occasion-btn">Wedding Hampers</button>
+      <button class="occasion-btn">Corporate Gifting</button>
+      <button class="occasion-btn">Custom Builder</button>
+    </div>
+  </section>
+
+  <section class="gift-builder">
+    <h3>Custom Gift Builder</h3>
+    <p>Drag and drop items to create your personalized gift box.</p>
+    <div class="builder-container">
+      <div class="items-palette">
+        <h4>Available Items</h4>
+        <div class="palette-row">
+          <div class="draggable-item" data-item="Almonds">Almonds</div>
+          <div class="draggable-item" data-item="Cashews">Cashews</div>
+          <div class="draggable-item" data-item="Walnuts">Walnuts</div>
+          <div class="draggable-item" data-item="Raisins">Raisins</div>
+          <div class="draggable-item" data-item="Pistachios">Pistachios</div>
+          <div class="draggable-item" data-item="Dates">Dates</div>
+        </div>
+      </div>
+      <div class="gift-box-preview">
+        <h4>Your Custom Box</h4>
+        <div class="box-visual">
+          <div class="box-lid"></div>
+          <div class="box-base">
+            <div class="drop-zone" id="drop-zone">
+              <p>Drop items here</p>
+            </div>
+          </div>
+        </div>
+        <button class="preview-btn">Preview Assembly</button>
+        <button class="add-to-cart-btn">Add Custom Box to Cart</button>
+      </div>
     </div>
   </section>
 
   <section class="gift-grid">
-    <div class="gift-card">
-      <img src="https://m.media-amazon.com/images/I/61xdIttPK-L._AC_UF894,1000_QL80_.jpg" alt="Festive Gift Box" />
-      <h3>Festive Delight</h3>
-      <p>A premium assortment of almonds, cashews, and golden raisins in an elegant silk-lined box. Perfect for Diwali, Christmas, or any festive celebration.</p>
+    <div class="gift-card" data-occasion="diwali">
+      <img src="https://m.media-amazon.com/images/I/61xdIttPK-L._AC_UF894,1000_QL80_.jpg" alt="Diwali Gift Box" />
+      <h3>Diwali Delight</h3>
+      <p>A premium assortment of almonds, cashews, and golden raisins in an elegant silk-lined box. Perfect for Diwali celebrations with festive vibes.</p>
       <div class="gift-features">
         <span>Premium Quality</span>
-        <span>Festival Special</span>
+        <span>Diwali Special</span>
       </div>
       <p class="price">₹1299</p>
       <button>Add to Cart</button>
     </div>
-    <div class="gift-card">
+    <div class="gift-card" data-occasion="wedding">
       <img src="https://assets.winni.in/product/primary/2024/10/99472.jpeg?dpr=1&w=500" alt="Wedding Gift Box" />
       <h3>Wedding Elegance</h3>
       <p>Exquisite handcrafted packaging with mixed nuts, dried fruits, and exotic berries. A sophisticated gift for newlyweds and wedding ceremonies.</p>
@@ -69,7 +100,7 @@
       <p class="price">₹1999</p>
       <button>Add to Cart</button>
     </div>
-    <div class="gift-card">
+    <div class="gift-card" data-occasion="corporate">
       <img src="https://m.media-amazon.com/images/I/91miORllbjL.jpg" alt="Corporate Gift Box" />
       <h3>Corporate Prestige</h3>
       <p>Luxury mixed nuts assortment in premium wooden packaging. Ideal for client gifting, employee rewards, and business partnerships.</p>
@@ -136,5 +167,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="gift.js"></script>
+  
 </body>
 </html>

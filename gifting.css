@@ -162,3 +162,191 @@
   color: var(--cream);
   transform: scale(1.05);
 }
+
+/* Gift Builder Styles */
+.gift-builder {
+  padding: 2rem;
+  background-color: var(--bg-dark);
+  text-align: center;
+  display: none;
+}
+
+.gift-builder h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.gift-builder p {
+  color: var(--cream);
+  margin-bottom: 2rem;
+}
+
+.builder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.items-palette {
+  background-color: var(--cream);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+  width: 100%;
+  max-width: 800px;
+}
+
+.items-palette .palette-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.items-palette h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--forest-green);
+  margin-bottom: 1rem;
+}
+
+.draggable-item {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  cursor: grab;
+  transition: var(--transition);
+  font-weight: bold;
+}
+
+.draggable-item:hover {
+  background-color: var(--forest-green);
+  color: var(--cream);
+  transform: scale(1.05);
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+}
+
+.gift-box-preview {
+  background-color: var(--cream);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+  min-width: 300px;
+}
+
+.gift-box-preview h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--forest-green);
+  margin-bottom: 1rem;
+}
+
+.box-visual {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  perspective: 1000px;
+}
+
+.box-lid {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 60px;
+  background-color: var(--gold);
+  border-radius: 10px 10px 0 0;
+  transform-origin: bottom;
+  transition: transform 1s ease;
+}
+
+.box-lid.open {
+  transform: translateX(-50%) rotateX(-90deg);
+}
+
+.box-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 140px;
+  background-color: var(--forest-green);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-zone {
+  width: 200px;
+  height: 120px;
+  border: 2px dashed var(--gold);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.drop-zone.drag-over {
+  background-color: var(--gold);
+  border-color: var(--forest-green);
+}
+
+.drop-zone p {
+  margin: 0;
+  color: var(--bg-dark);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.drop-zone.has-items p {
+  display: none;
+}
+
+.preview-btn, .add-to-cart-btn {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: var(--transition);
+  margin: 0.5rem;
+}
+
+.preview-btn:hover, .add-to-cart-btn:hover {
+  background-color: var(--forest-green);
+  color: var(--cream);
+  transform: scale(1.05);
+}
+
+/* Animation keyframes */
+@keyframes assemble {
+  0% { transform: translateY(50px) scale(0.8); opacity: 0; }
+  50% { transform: translateY(0) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.assemble-animation {
+  animation: assemble 1s ease-out;
+}

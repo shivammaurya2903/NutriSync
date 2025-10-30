@@ -33,38 +33,44 @@
   </section>
 
   <section class="filters">
-    <button>All</button>
-    <button>Gourmet Nuts</button>
-    <button>Exotic Berries</button>
-    <button>Gift Boxes</button>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="gourmet-nuts">Gourmet Nuts</button>
+    <button class="filter-btn" data-filter="exotic-berries">Exotic Berries</button>
+    <button class="filter-btn" data-filter="gift-boxes">Gift Boxes</button>
+    <button class="filter-btn" data-filter="vegan">Vegan</button>
+    <button class="filter-btn" data-filter="gluten-free">Gluten-Free</button>
+    <button class="filter-btn" data-filter="festive-picks">Festive Picks</button>
   </section>
 
   <section class="product-grid">
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://media.istockphoto.com/id/1360789044/photo/almonds-isolated-on-wooden-background-flat-lay.jpg?s=612x612&w=0&k=20&c=m3JUwL1ru0rHGQwdtkHpl7PjWjvdGzbMKcTnkyJmzFw=" alt="Premium Almonds" />
+      <span class="tag best-seller">Best Seller</span>
       <h3>Premium Almonds</h3>
       <p>Rich in healthy fats and vitamin E. Perfect for snacking or baking.</p>
       <div class="rating">★★★★★ (4.8)</div>
       <p class="price">₹499 / 250g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://www.1mg.com/articles/wp-content/uploads/2016/10/Walnut.jpg" alt="Organic Walnuts" />
+      <span class="tag new-arrival">New Arrival</span>
       <h3>Organic Walnuts</h3>
       <p>Brain-boosting omega-3s in every bite. Sustainably sourced and organic.</p>
       <div class="rating">★★★★★ (4.9)</div>
       <p class="price">₹599 / 250g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
       <img src="https://www.goingnuts.in/wp-content/uploads/2023/03/361A2490-scaled-1.jpg" alt="Exotic Berries Mix" />
+      <span class="tag new-arrival">New Arrival</span>
       <h3>Exotic Berries Mix</h3>
       <p>A blend of goji berries, blueberries, and cranberries. Antioxidant powerhouse.</p>
       <div class="rating">★★★★★ (4.7)</div>
       <p class="price">₹699 / 200g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://narayanjigajakwale.in/cdn/shop/files/Cashwe-180-No.jpg?v=1727454538" alt="Premium Cashews" />
       <h3>Premium Cashews</h3>
       <p>Creamy and crunchy cashews, perfect for trail mix or as a healthy snack.</p>
@@ -72,7 +78,7 @@
       <p class="price">₹549 / 250g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://d3kgrlupo77sg7.cloudfront.net/media/chococoorgspice.com/images/products/small/pista-roasted-and-salted.20220922163628.webp" alt="Pistachios" />
       <h3>Roasted Pistachios</h3>
       <p>Salted and roasted to perfection. High in protein and heart-healthy fats.</p>
@@ -80,7 +86,7 @@
       <p class="price">₹649 / 200g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
       <img src="https://cdn.shopaccino.com/edible-smart/products/jardalu-675758_l.jpg?v=613" alt="Dried Apricots" />
       <h3>Organic Dried Apricots</h3>
       <p>Sweet and chewy apricots, naturally dried with no added sugars.</p>
@@ -88,7 +94,7 @@
       <p class="price">₹399 / 200g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://media.post.rvohealth.io/wp-content/uploads/2022/05/brazil-nuts-1296x728-body.jpg" alt="Brazil Nuts" />
       <h3>Brazil Nuts</h3>
       <p>Rich in selenium and healthy fats. A true superfood from the Amazon.</p>
@@ -96,7 +102,7 @@
       <p class="price">₹799 / 150g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://cdn.mafrservices.com/sys-master-root/h07/h47/11887915958302/573061_main.jpg?im=Resize=480" alt="Mixed Nuts Pack" />
       <h3>Premium Mixed Nuts</h3>
       <p>Our signature blend of almonds, walnuts, cashews, and pistachios.</p>
@@ -104,7 +110,7 @@
       <p class="price">₹899 / 500g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://5.imimg.com/data5/SELLER/Default/2025/5/508184808/QN/TX/QI/122223554/white-makana-seeds.jpg" alt="Makana" />
       <h3>Makana</h3>
       <p>Crunchy and nutritious fox nuts, high in protein and minerals.</p>
@@ -112,7 +118,7 @@
       <p class="price">₹999 / 500g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
       <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/WD/EF/QB/111530212/dates-500x500.jpg" alt="Black Dates" />
       <h3>Black Dates</h3>
       <p>Sweet and juicy black dates, a natural source of energy and fiber.</p>
@@ -120,7 +126,7 @@
       <p class="price">₹699 / 500g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjftUsJkm2fi40xDq9ZYwfZ1RS1jYZ9Wz_pQ&s" alt="Anjeer" />
       <h3>Anjeer</h3>
       <p>Dried figs rich in fiber, calcium, and antioxidants for digestive health.</p>
@@ -128,7 +134,7 @@
       <p class="price">₹799 / 500g</p>
       <button>Add to Cart</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
       <img src="https://www.richvalley.in/wp-content/uploads/2024/09/california-pistachios-min-2.webp" alt="Pista" />
       <h3>Pista</h3>
       <p>Fresh, unsalted pistachios, perfect for healthy snacking.</p>
@@ -136,8 +142,31 @@
       <p class="price">₹859 / 500g</p>
       <button>Add to Cart</button>
     </div>
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
+      <img src="https://www.greendna.in/cdn/shop/products/cran_668x.jpg?v=1605369467" alt="Dried Cranberries" />
+      <h3>Dried Cranberries</h3>
+      <p>Tart and sweet dried cranberries, packed with antioxidants and fiber.</p>
+      <div class="rating">★★★★★ (4.7)</div>
+      <p class="price">₹449 / 200g</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="gourmet-nuts vegan gluten-free">
+      <img src="https://nutsoasis.co.uk/cdn/shop/articles/Macadamia_and_Hazelnut_same_4f3c558c-28bd-4022-aa58-bafb339ece81.webp?v=1753420452&width=2048" alt="Hazelnuts" />
+      <h3>Hazelnuts</h3>
+      <p>Nutty and crunchy hazelnuts, rich in healthy fats and vitamins.</p>
+      <div class="rating">★★★★★ (4.8)</div>
+      <p class="price">₹649 / 250g</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="exotic-berries vegan gluten-free">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2025/1/484505638/PM/NQ/GB/217170053/nashik-golden-raisins.jpg" alt="Raisins" />
+      <h3>Raisins</h3>
+      <p>Sweet and chewy raisins, a natural source of iron and energy.</p>
+      <div class="rating">★★★★★ (4.6)</div>
+      <p class="price">₹349 / 250g</p>
+      <button>Add to Cart</button>
+    </div>
   </section>
-
   <footer>
     <div>
       <h4>NutriSync</h4>
