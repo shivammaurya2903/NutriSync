@@ -27,7 +27,9 @@
       <a href="contact.html">Contact</a>
       <a href="cart.html">Cart</a>
       <a href="profile.html">Profile</a>
-      <a href="login.html">Login</a>
+      <a href="login.html" id="login-link">Login</a>
+      <a href="#" id="logout-link" style="display:none;" onclick="logoutUser()">Logout</a>
+      <span id="user-name" style="display:none;"></span>
     </nav>
   </header>
 
@@ -221,6 +223,7 @@
     </a>
   </div>
 
+  <script src="auth.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
