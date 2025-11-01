@@ -368,7 +368,7 @@ nav a:hover {
   padding: 2rem;
   text-align: center;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 800px;
   margin: 2rem auto;
 }
 
@@ -394,6 +394,30 @@ nav a:hover {
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.delivery-checker #map {
+  margin: 20px auto;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  height: 400px;
+  width: 100%;
+}
+
+.delivery-checker #auto-detect-btn {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.delivery-checker #auto-detect-btn:hover {
+  background-color: var(--forest-green);
+  color: var(--cream);
 }
 
 #delivery-result {

@@ -254,7 +254,108 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//dilivery location checker 
+// Delivery location checker with map integration
+
+let map;
+let userMarker;
+let serviceableZones = [];
+
+// Initialize map when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.getElementById('map')) {
+    initializeMap();
+  }
+});
+
+function initializeMap() {
+  // Center on Lucknow, India
+  map = L.map('map').setView([26.8467, 80.9462], 9);
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Define serviceable zones (approximate polygons for Lucknow and Hardoi)
+  const lucknowZone = [
+    [26.7, 80.8],
+    [26.7, 81.1],
+    [26.9, 81.1],
+    [26.9, 80.8]
+  ];
+
+  const hardoiZone = [
+    [27.2, 80.0],
+    [27.2, 80.5],
+    [27.5, 80.5],
+    [27.5, 80.0]
+  ];
+
+  // Add Lucknow zone
+  const lucknowPolygon = L.polygon(lucknowZone, {color: 'green', fillColor: 'green', fillOpacity: 0.2}).addTo(map);
+  lucknowPolygon.bindPopup("Serviceable Zone: Lucknow District");
+  serviceableZones.push(lucknowPolygon);
+
+  // Add Hardoi zone
+  const hardoiPolygon = L.polygon(hardoiZone, {color: 'blue', fillColor: 'blue', fillOpacity: 0.2}).addTo(map);
+  hardoiPolygon.bindPopup("Serviceable Zone: Hardoi District");
+  serviceableZones.push(hardoiPolygon);
+
+  // Add click handler for dropping pins
+  map.on('click', function(e) {
+    dropPin(e.latlng);
+  });
+
+  // Auto-detect button
+  document.getElementById('auto-detect-btn').addEventListener('click', autoDetectLocation);
+}
+
+function dropPin(latlng) {
+  // Remove existing user marker
+  if (userMarker) {
+    map.removeLayer(userMarker);
+  }
+
+  // Add new marker
+  userMarker = L.marker(latlng).addTo(map);
+  userMarker.bindPopup("Your selected location").openPopup();
+
+  // Check if within serviceable zone
+  checkLocationInZone(latlng);
+}
+
+function checkLocationInZone(latlng) {
+  const result = document.getElementById('delivery-result');
+  let inZone = false;
+  let zoneName = '';
+
+  serviceableZones.forEach(zone => {
+    if (zone.getBounds().contains(latlng)) {
+      inZone = true;
+      zoneName = zone.getPopup().getContent().split(': ')[1];
+    }
+  });
+
+  if (inZone) {
+    result.innerHTML = `✅ Delivery available in ${zoneName}! Estimated time: <strong>2–5 days</strong>`;
+  } else {
+    result.innerHTML = `❌ Sorry, we don’t currently deliver to this location.`;
+  }
+}
+
+function autoDetectLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const latlng = [position.coords.latitude, position.coords.longitude];
+      map.setView(latlng, 13);
+      dropPin(L.latLng(latlng));
+    }, function(error) {
+      alert('Unable to retrieve your location. Please allow location access.');
+    });
+  } else {
+    alert('Geolocation is not supported by this browser.');
+  }
+}
 
 function checkDelivery(event) {
   event.preventDefault();
