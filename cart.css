@@ -55,6 +55,7 @@
 
 /* Free Shipping Banner */
 .free-shipping-banner {
+  display: none;
   background-color: var(--gold);
   color: var(--bg-dark);
   padding: 1rem;

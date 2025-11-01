@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriSync | Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+  <header>
+    <h1>NutriSync</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <section class="payment-section">
+    <h2>Choose Your Payment Method</h2>
+
+    <div class="payment-boxes">
+      <!-- UPI QR Payment -->
+      <div class="payment-box">
+        <h3>Scan & Pay via UPI</h3>
+        <img src="images/qr-paytm.jpg" alt="NutriSync UPI QR" width="220" />
+        <p>UPI ID: <strong>9935834311@ptyes</strong></p>
+        <input type="text" placeholder="Enter UPI Transaction ID" />
+        <button>Confirm UPI Payment</button>
+      </div>
+
+      <!-- Manual Bank/Card Transfer -->
+      <div class="payment-box">
+        <h3>Bank/Card Transfer</h3>
+        <p>Account Name: <strong>NutriSync</strong></p>
+        <p>Bank: <strong>HDFC Bank</strong></p>
+        <p>Account No: <strong>1234567890</strong></p>
+        <p>IFSC: <strong>HDFC0001234</strong></p>
+        <input type="text" placeholder="Enter Transaction Reference ID" />
+        <button>Confirm Bank Transfer</button>
+      </div>
+
+      <!-- Cash on Delivery -->
+      <div class="payment-box">
+        <h3>Cash on Delivery</h3>
+        <p>Available in Lucknow & Hardoi districts</p>
+        <button>Place COD Order</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="payment-success" class="payment-success">
+    <h2>Payment Successful!</h2>
+    <p>Your order has been placed successfully.</p>
+    <div class="order-details">
+      <h3>Order Details</h3>
+      <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+      <p><strong>Estimated Delivery:</strong> 3-5 business days</p>
+      <p><strong>Tracking:</strong> You will receive a tracking link via email/SMS soon.</p>
+      <p>Thank you for choosing NutriSync! We hope you enjoy your healthy products.</p>
+    </div>
+    <button onclick="window.location.href='order.html'">View Order</button>
+    <button onclick="window.location.href='index.html'">Continue Shopping</button>
+  </section>
+
+  <section class="payment-issues">
+    <h2>Payment Issues?</h2>
+    <p>If your transaction failed or you encounter any payment problems, please contact us immediately.</p>
+    <p>We aim to resolve issues within 24 hours.</p>
+  </section>
+
+  <footer>
+    <div>
+      <h4>NutriSync</h4>
+      <p>Owner: Shivam Maurya</p>
+      <p>Location: Lucknow, Uttar Pradesh</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p>Recipes</p>
+      <p>Our Story</p>
+      <p>FAQs</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <p>Email: contact@nutrisync.in</p>
+      <p>Instagram: @nutrisync</p>
+      <p>WhatsApp: +91-XXXXXXXXXX</p>
+    </div>
+    <p>© 2025 NutriSync. All rights reserved.</p>
+  </footer>
+
+  <script src="payment.js"></script>
+</body>
+</html>

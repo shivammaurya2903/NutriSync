@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (googleBtn) {
     googleBtn.addEventListener('click', function() {
-      alert('This feature is not implemented yet.');
+      alert('Google Sign-In is not implemented yet. Please use email and password.');
     });
   }
 
   if (appleBtn) {
     appleBtn.addEventListener('click', function() {
-      alert('This feature is not implemented yet.');
+      alert('Apple Sign-In is not implemented yet. Please use email and password.');
     });
   }
 });

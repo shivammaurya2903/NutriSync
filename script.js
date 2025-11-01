@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Function to add item to cart
-  function addToCart(name, price) {
+  function addToCart(name, price, image) {
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      cart.push({ name, price, quantity: 1 });
+      cart.push({ name, price, quantity: 1, image });
     }
     saveCart();
     showNotification(`${name} added to cart!`, 'success');
@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const productCard = this.closest('.product-card, .gift-card');
         if (productCard) {
           const name = productCard.querySelector('h3, h4').textContent;
+          const image = productCard.querySelector('img').src;
           let priceElement = productCard.querySelector('.price');
           if (!priceElement) {
             // Fallback to first p element containing ₹
@@ -158,10 +159,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if (priceMatch) {
               const price = parseInt(priceMatch[1]);
               if (!isNaN(price) && price > 0) {
-                addToCart(name, price);
+                addToCart(name, price, image);
+              } else {
+                console.error('Invalid price for product:', name, priceText);
               }
+            } else {
+              console.error('Price not found for product:', name);
             }
+          } else {
+            console.error('Price element not found for product:', name);
           }
+        } else {
+          console.error('Product card not found for button');
         }
       });
     }
@@ -245,4 +254,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-  
+//dilivery location checker 
+
+function checkDelivery(event) {
+  event.preventDefault();
+  const pincode = document.getElementById('pincode').value;
+  const result = document.getElementById('delivery-result');
+
+  // Expanded serviceable pincodes for Lucknow and Hardoi
+  const deliveryTimes = {
+    // Lucknow City
+    '226001': '2–3 days (Lucknow GPO)',
+    '226002': '2–3 days (Aminabad)',
+    '226003': '2–3 days (Chowk)',
+    '226004': '2–3 days (Alambagh)',
+    '226005': '2–3 days (Indira Nagar)',
+    '226006': '2–3 days (Gomti Nagar)',
+    '226007': '2–3 days (Rajajipuram)',
+    '226010': '2–3 days (Jankipuram)',
+    '226012': '2–3 days (Vikas Nagar)',
+
+    // Lucknow Suburban / Nearby Towns
+    '226021': '3–4 days (Malihabad)',
+    '226201': '3–4 days (Bakshi Ka Talab)',
+    '226028': '3–4 days (Chinhat)',
+    '226031': '3–4 days (Kursi Road)',
+    '227105': '3–4 days (Gosainganj)',
+    '227107': '3–4 days (Mohanlalganj)',
+
+    // Hardoi District
+    '241001': '3–5 days (Hardoi City)',
+    '241123': '3–5 days (Sandila)',
+    '241202': '3–5 days (Bharawan)',
+    '241304': '3–5 days (Bilgram)',
+    '241126': '3–5 days (Pihani)',
+    '241402': '3–5 days (Shahabad)'
+  };
+
+  if (deliveryTimes[pincode]) {
+    result.innerHTML = `✅ Delivery available! Estimated time: <strong>${deliveryTimes[pincode]}</strong>`;
+  } else {
+    result.innerHTML = `❌ Sorry, we don’t currently deliver to this pincode.`;
+  }
+}

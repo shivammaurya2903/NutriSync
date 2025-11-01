@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriSync | Checkout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <header>
+    <h1>NutriSync</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <section id="live-location">
+    <div class="location-card">
+      <h3>Auto-Fill Location</h3>
+      <p>Use your current location to automatically fill in city, state, and pincode.</p>
+      <button id="auto-fill-location" class="location-btn">Use My Current Location</button>
+    </div>
+  </section>
+
+  <section class="checkout-section">
+    <h2>Checkout</h2>
+
+    <div class="checkout-container">
+      <form class="checkout-form">
+        <h3>Billing & Shipping Details</h3>
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="phone" placeholder="Phone Number" required />
+        <input type="text" id="address" placeholder="Address Line 1" required />
+        <input type="text" id="city" placeholder="City" required />
+        <input type="text" id="state" placeholder="State" required />
+        <input type="text" id="pincode" placeholder="Pincode" required />
+      </form>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <ul id="order-items">
+          <!-- Items will be populated by JS -->
+        </ul>
+        <p id="discount-info"></p>
+        <p><strong>Total: <span id="total-amount">₹0</span></strong></p>
+        <button class="pay-btn">Proceed to Payment</button>
+      </div>
+
+      <div class="coupon-section">
+        <h3>Apply Coupon</h3>
+        <form onsubmit="applyCoupon(event)">
+          <input type="text" id="coupon-code" placeholder="Enter coupon code" required />
+          <button type="submit">Apply</button>
+        </form>
+        <div id="coupon-result"></div>
+        <div class="demo-coupons">
+          <p><strong>Demo Coupons:</strong></p>
+          <ul>
+            <li>WELCOME150 - 15% off (Min ₹1000)</li>
+            <li>SAVE100 - 10% off (Min ₹800)</li>
+            <li>HEALTHY50 - 5% off (Min ₹500)</li>
+            <li>NUTRISYNC20 - 2% off (Min ₹200)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h4>NutriSync</h4>
+      <p>Owner: Shivam Maurya</p>
+      <p>Location: Lucknow, Uttar Pradesh</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p>Recipes</p>
+      <p>Our Story</p>
+      <p>FAQs</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <p>Email</p>
+      <p>Instagram</p>
+      <p>WhatsApp</p>
+    </div>
+    <p>© 2025 NutriSync. All rights reserved.</p>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

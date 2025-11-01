@@ -8,12 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Function to add item to cart
-  function addToCart(name, price) {
+  function addToCart(name, price, image) {
+    if (!name || !price || isNaN(price) || price <= 0) {
+      console.error('Invalid item name or price:', name, price);
+      showNotification('Error adding item to cart.', 'error');
+      return;
+    }
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      cart.push({ name, price, quantity: 1 });
+      cart.push({ name, price, quantity: 1, image });
     }
     saveCart();
     showNotification(`${name} added to cart!`, 'success');
@@ -70,7 +75,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add active class to clicked button
         this.classList.add('active');
 
-        const filterValue = this.textContent.toLowerCase().replace(' ', '');
+        let filterValue = this.textContent.toLowerCase();
+
+        if (filterValue === 'diwali picks') {
+          filterValue = 'diwali';
+        } else if (filterValue === 'wedding hampers') {
+          filterValue = 'wedding';
+        } else if (filterValue === 'corporate gifting') {
+          filterValue = 'corporate';
+        } else if (filterValue === 'custom builder') {
+          filterValue = 'custombuilder';
+        }
 
         if (filterValue === 'custombuilder') {
           // Show gift builder and hide gift grid
@@ -185,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
           const itemNames = Array.from(items).map(item => item.textContent).join(', ');
           const customBoxName = `Custom Gift Box (${itemNames})`;
           const price = 1500 + (items.length * 200); // Base price + per item
-          addToCart(customBoxName, price);
+          const image = 'images/custom-gift-box.png'; // Default image for custom boxes
+          addToCart(customBoxName, price, image);
           showNotification('Custom gift box added to cart!', 'success');
         } else {
           showNotification('Please add items to your custom box first.', 'error');

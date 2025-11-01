@@ -1,0 +1,226 @@
+.payment-section {
+  background-color: var(--bg-dark);
+  color: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: calc(100vh - 200px); /* Adjust for header and footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-section h2 {
+  width: 100%;
+}
+
+.payment-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.payment-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.payment-box {
+  background-color: var(--forest-green);
+  padding: 2rem;
+  border-radius: 10px;
+  color: var(--cream);
+  max-width: 500px;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: var(--transition);
+  flex: 1 1 300px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+.payment-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow), 0 0 15px var(--gold);
+}
+
+.payment-box h3 {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.payment-box img {
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.payment-box p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.payment-box input {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  width: 80%;
+  font-size: 1rem;
+}
+
+.payment-box button {
+  margin-top: 1rem;
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+.payment-box button:hover {
+  background-color: var(--forest-green);
+  color: var(--cream);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.payment-issues {
+  background-color: var(--forest-green);
+  color: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.payment-issues h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.payment-issues p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-info {
+  margin: 1rem 0;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-section {
+    padding: 2rem 1rem;
+  }
+
+  .payment-box {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .payment-box input {
+    width: 90%;
+  }
+
+  .payment-box button {
+    width: 100%;
+  }
+
+  .payment-issues {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .payment-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .payment-box img {
+    width: 150px;
+  }
+
+  .payment-issues h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.payment-success {
+  display: none;
+  background-color: var(--forest-green);
+  color: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.payment-success h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.payment-success p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.order-details {
+  background-color: var(--bg-dark);
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-details h3 {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.order-details p {
+  margin: 0.5rem 0;
+  text-align: left;
+}
+
+.payment-success button {
+  background-color: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: var(--transition);
+  margin-top: 1rem;
+}
+
+.payment-success button:hover {
+  background-color: var(--forest-green);
+  color: var(--cream);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+
