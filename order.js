@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const ordersContainer = document.getElementById('orders-container');
         const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
+        // Sort orders by date in ascending order (oldest first)
+        orders.sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('-'));
+            const dateB = new Date(b.date.split('/').reverse().join('-'));
+            return dateA - dateB;
+        });
+
         if (orders.length === 0) {
             ordersContainer.innerHTML = '<p>No orders found. Start shopping to place your first order!</p>';
             return;

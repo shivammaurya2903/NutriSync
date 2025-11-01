@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 items: pendingOrder.items,
                 total: pendingOrder.total,
                 appliedDiscount: pendingOrder.appliedDiscount,
+                bulkDiscount: pendingOrder.bulkDiscount || 0,
+                giftWrapping: pendingOrder.giftWrapping,
                 paymentMethod: paymentMethod,
-                status: 'Delivered' // Default status for demo
+                status: 'Processing' // Initial status
             };
 
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -35,42 +37,126 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // UPI Payment
-    const upiButton = document.querySelector('.payment-box:nth-child(1) button');
-    const upiInput = document.querySelector('.payment-box:nth-child(1) input');
+    // Function to show notifications
+    function showNotification(message, type = 'info') {
+        // Remove existing notification
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
 
-    if (upiButton && upiInput) {
-        upiButton.addEventListener('click', function() {
-            const transactionId = upiInput.value.trim();
-            if (transactionId === '') {
-                alert('Please enter the UPI Transaction ID.');
-                return;
-            }
-            showPaymentSuccess('UPI');
-        });
+        // Create new notification
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+            font-weight: bold;
+        `;
+        document.body.appendChild(notification);
+
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
     }
 
-    // Bank Transfer
-    const bankButton = document.querySelector('.payment-box:nth-child(2) button');
-    const bankInput = document.querySelector('.payment-box:nth-child(2) input');
+    // Confirm payment function
+    window.confirmPayment = function(method) {
+        let transactionId = '';
+        let isValid = true;
 
-    if (bankButton && bankInput) {
-        bankButton.addEventListener('click', function() {
-            const referenceId = bankInput.value.trim();
-            if (referenceId === '') {
-                alert('Please enter the Transaction Reference ID.');
+        switch(method) {
+            case 'upi':
+                transactionId = document.getElementById('upi-transaction-id').value.trim();
+                if (!transactionId) {
+                    showNotification('Please enter UPI Transaction ID.', 'error');
+                    isValid = false;
+                }
+                break;
+            case 'card':
+                // Card validation would be handled by form submission
+                break;
+            case 'wallet':
+                transactionId = document.getElementById('wallet-transaction-id').value.trim();
+                if (!transactionId) {
+                    showNotification('Please enter Wallet Transaction ID.', 'error');
+                    isValid = false;
+                }
+                break;
+            case 'bank':
+                transactionId = document.getElementById('bank-transaction-id').value.trim();
+                if (!transactionId) {
+                    showNotification('Please enter Bank Transaction Reference ID.', 'error');
+                    isValid = false;
+                }
+                break;
+            case 'cod':
+                // COD doesn't require transaction ID
+                break;
+        }
+
+        if (isValid) {
+            showPaymentSuccess(method.toUpperCase());
+        }
+    };
+
+    // Select wallet function
+    window.selectWallet = function(walletType) {
+        const walletInput = document.getElementById('wallet-transaction-id');
+        const confirmBtn = document.getElementById('confirm-wallet');
+
+        // Show input and confirm button
+        walletInput.style.display = 'block';
+        confirmBtn.style.display = 'block';
+
+        showNotification(`Selected ${walletType.toUpperCase()}. Enter transaction ID to confirm.`, 'info');
+    };
+
+    // Card form submission
+    const cardForm = document.getElementById('card-form');
+    if (cardForm) {
+        cardForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const cardNumber = document.getElementById('card-number').value.trim();
+            const expiry = document.getElementById('card-expiry').value.trim();
+            const cvv = document.getElementById('card-cvv').value.trim();
+            const name = document.getElementById('card-name').value.trim();
+
+            // Basic validation
+            if (cardNumber.length !== 16 || isNaN(cardNumber)) {
+                showNotification('Please enter a valid 16-digit card number.', 'error');
                 return;
             }
-            showPaymentSuccess('Bank Transfer');
-        });
-    }
 
-    // Cash on Delivery
-    const codButton = document.querySelector('.payment-box:nth-child(3) button');
+            if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+                showNotification('Please enter expiry date in MM/YY format.', 'error');
+                return;
+            }
 
-    if (codButton) {
-        codButton.addEventListener('click', function() {
-            showPaymentSuccess('Cash on Delivery');
+            if (cvv.length !== 3 || isNaN(cvv)) {
+                showNotification('Please enter a valid 3-digit CVV.', 'error');
+                return;
+            }
+
+            if (!name) {
+                showNotification('Please enter cardholder name.', 'error');
+                return;
+            }
+
+            // Simulate card processing
+            showNotification('Processing card payment...', 'info');
+            setTimeout(() => {
+                showPaymentSuccess('Credit/Debit Card');
+            }, 2000);
         });
     }
 });

@@ -1,6 +1,8 @@
 // Load cart from localStorage or initialize empty array
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let appliedDiscount = 0;
+let giftWrappingCost = 0;
+let bulkDiscount = 0;
 
 // Deliverable pincodes (sample for Lucknow area)
 const deliverablePincodes = [
@@ -79,27 +81,62 @@ function renderOrderSummary() {
   const orderItems = document.getElementById('order-items');
   const totalAmount = document.getElementById('total-amount');
   const discountInfo = document.getElementById('discount-info');
+  const bulkDiscountInfo = document.getElementById('bulk-discount-info');
   orderItems.innerHTML = '';
-  let total = 0;
+  let originalTotal = 0;
 
   cart.forEach(item => {
     const li = document.createElement('li');
     li.textContent = `${item.name} × ${item.quantity} — ₹${item.price * item.quantity}`;
     orderItems.appendChild(li);
-    total += item.price * item.quantity;
+    originalTotal += item.price * item.quantity;
   });
 
-  // Apply discount if any
+  // Add gift wrapping cost to original total if selected
+  const giftWrappingCheckbox = document.getElementById('gift-wrapping');
+  if (giftWrappingCheckbox && giftWrappingCheckbox.checked) {
+    originalTotal += 50;
+    giftWrappingCost = 50;
+  } else {
+    giftWrappingCost = 0;
+  }
+
+  let total = originalTotal;
+
+  // Calculate bulk discount (10% off for 5+ items)
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  if (totalItems >= 5) {
+    bulkDiscount = total * 0.1;
+    total -= bulkDiscount;
+    bulkDiscountInfo.textContent = `Bulk Discount: 10% off for 5+ items (₹${bulkDiscount})`;
+    bulkDiscountInfo.style.display = 'block';
+  } else {
+    bulkDiscount = 0;
+    bulkDiscountInfo.style.display = 'none';
+  }
+
+  // Apply coupon discount if any
+  let couponDiscountAmount = 0;
   if (appliedDiscount > 0) {
-    const discountAmount = total * (appliedDiscount / 100);
-    total -= discountAmount;
-    discountInfo.textContent = `Discount Applied: ${appliedDiscount}% off (₹${discountAmount})`;
+    couponDiscountAmount = total * (appliedDiscount / 100);
+    total -= couponDiscountAmount;
+    discountInfo.textContent = `Coupon Discount: ${appliedDiscount}% off (₹${couponDiscountAmount})`;
     discountInfo.style.display = 'block';
   } else {
     discountInfo.style.display = 'none';
   }
 
-  totalAmount.textContent = `₹${total}`;
+  // Update total display
+  if (total < originalTotal) {
+    totalAmount.innerHTML = `<strong>Total: ₹${total} <span style="text-decoration: line-through; color: #888;">(was ₹${originalTotal})</span></strong>`;
+  } else {
+    totalAmount.innerHTML = `<strong>Total: ₹${total}</strong>`;
+  }
+}
+
+// Function to update total when gift wrapping is toggled
+function updateTotal() {
+  renderOrderSummary();
 }
 
 // Function to apply coupon
@@ -108,11 +145,14 @@ function applyCoupon(event) {
   const couponCode = document.getElementById('coupon-code').value.trim().toUpperCase();
   const couponResult = document.getElementById('coupon-result');
 
-  // Calculate current total before discount
+  // Calculate current total before discount (including gift wrapping)
   let currentTotal = 0;
   cart.forEach(item => {
     currentTotal += item.price * item.quantity;
   });
+  if (giftWrappingCost > 0) {
+    currentTotal += giftWrappingCost;
+  }
 
   // Coupon validation with conditions (in a real app, this would be server-side)
   const validCoupons = {
@@ -221,6 +261,8 @@ function handlePayment() {
   const orderDetails = {
     items: cart,
     appliedDiscount: appliedDiscount,
+    bulkDiscount: bulkDiscount,
+    giftWrapping: giftWrappingCost > 0,
     total: parseFloat(document.getElementById('total-amount').textContent.replace('₹', '')),
     date: new Date().toISOString(),
     billingDetails: {

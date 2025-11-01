@@ -49,6 +49,7 @@
         <ul id="order-items">
           <!-- Items will be populated by JS -->
         </ul>
+        <p id="bulk-discount-info"></p>
         <p id="discount-info"></p>
         <p><strong>Total: <span id="total-amount">₹0</span></strong></p>
         <button class="pay-btn">Proceed to Payment</button>
@@ -70,6 +71,15 @@
             <li>NUTRISYNC20 - 2% off (Min ₹200)</li>
           </ul>
         </div>
+      </div>
+
+      <div class="gift-wrapping-section">
+        <h3>Gift Wrapping</h3>
+        <label>
+          <input type="checkbox" id="gift-wrapping" onchange="updateTotal()" />
+          Add gift wrapping (+₹50)
+        </label>
+        <p>Make your order special with elegant gift wrapping.</p>
       </div>
     </div>
   </section>
